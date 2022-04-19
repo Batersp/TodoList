@@ -7,9 +7,7 @@ import {v1} from "uuid";
 export type FilterValuesType = 'all' | 'active' | 'completed'
 
 
-
 function App() {
-
 
     const todoListTitle: string = 'What to learn'
 
@@ -56,11 +54,11 @@ function App() {
     return (
         <div className="App">
             <TodoList
-                      title={todoListTitle}
-                      tasks={tasksForRender}
-                      removeTask={removeTask}
-                      changeFilter={changeFilter}
-                      addTask={addTask}/>
+                title={todoListTitle}
+                tasks={tasksForRender}
+                removeTask={removeTask}
+                changeFilter={changeFilter}
+                addTask={addTask}/>
 
         </div>
     );
