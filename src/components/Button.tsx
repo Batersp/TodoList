@@ -10,6 +10,6 @@ export const Button = (props: ButtonPropsType) => {
         props.callBack()
     }
     return (
-        <button onClick={onClickHandler}>{props.name}</button>
+        <button className='active-filter' onClick={onClickHandler}>{props.name}</button>
     )
 }

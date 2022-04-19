@@ -37,11 +37,14 @@ export const TodoList = (props: TodoListPropsType) => {
         props.removeTask(tId)
     }
 
-    const tasksListItems = props.tasks.map(t => {
 
+    const tasksListItems = props.tasks.map(t => {
         return (
             <li key={t.id}>
-                <input type="checkbox" checked={t.isDone}/>
+                <input
+                    type="checkbox"
+                    checked={t.isDone}
+                />
                 <span>{t.title}</span>
                 <Button name={'delete'} callBack={() => removeTask(t.id)}/>
             </li>
