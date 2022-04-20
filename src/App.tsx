@@ -39,26 +39,23 @@ function App() {
         setFilter(filter)
     }
 
-    let tasksForRender;
-    switch (filter) {
-        case 'completed':
-            tasksForRender = tasks.filter(t => t.isDone === true)
-            break
-        case 'active':
-            tasksForRender = tasks.filter(t => t.isDone === false)
-            break
-        default:
-            tasksForRender = tasks
+    const changeTasksStatus = (taskId: string, isDone: boolean ) => {
+        setTasks(tasks.map(t => t.id === taskId? {...t, isDone: isDone} : t))
     }
+
+
 
     return (
         <div className="App">
             <TodoList
                 title={todoListTitle}
-                tasks={tasksForRender}
+                tasks={tasks}
+                filter={filter}
+
                 removeTask={removeTask}
                 changeFilter={changeFilter}
-                addTask={addTask}/>
+                addTask={addTask}
+                changeTasksStatus={changeTasksStatus}/>
 
         </div>
     );
