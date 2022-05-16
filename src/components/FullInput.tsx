@@ -1,4 +1,5 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
+import {Button, TextField} from "@mui/material";
 
 export type FullInputPropsType = {
     callBack: (title: string) => void
@@ -9,7 +10,6 @@ export const FullInput = (props: FullInputPropsType) => {
     const [title, setTitle] = useState<string>('')
     const [error, setError] = useState<boolean>(false)
 
-    const inputClasses = error ? 'error' : ''
 
     const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
@@ -33,12 +33,19 @@ export const FullInput = (props: FullInputPropsType) => {
 
     return (
         <div>
-            <input value={title}
-                   onChange={onChangeInput}
-                   onKeyPress={onKeyPressInput}
-                   className={inputClasses}
+            <TextField id="outlined-basic"
+                       label={error? 'Title is required': "Enter text"}
+                       variant="outlined"
+                       value={title}
+                       onChange={onChangeInput}
+                       onKeyPress={onKeyPressInput}
+                       size={"small"}
+                       error={error}
             />
-            <button onClick={onClickAddTask}>+</button>
+
+            <Button variant="contained"
+                    style={{maxWidth: '38px', maxHeight: '38px', minWidth: '38px', minHeight: '38px'}}
+                    onClick={onClickAddTask}>+</Button>
             {error && <div className='error-message'>Title is required</div>}
 
         </div>
