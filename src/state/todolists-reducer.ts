@@ -13,7 +13,7 @@ export const todolistReducer = (state: Array<TodolistsType>, action: tsarTypeFor
                 title: action.payload.title,
                 filter: 'all'
             }
-            return [...state, newTodolist]
+            return [newTodolist, ...state]
         }
         case "CHANGE-TODOLIST-TITLE": {
             return state.map(el => el.id === action.payload.id? {...el, title: action.payload.title}: el)
