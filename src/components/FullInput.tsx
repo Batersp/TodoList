@@ -5,7 +5,8 @@ export type FullInputPropsType = {
     callBack: (title: string) => void
 }
 
-export const FullInput = (props: FullInputPropsType) => {
+export const FullInput = React.memo( (props: FullInputPropsType) => {
+    console.log('FullInput')
 
     const [title, setTitle] = useState<string>('')
     const [error, setError] = useState<boolean>(false)
@@ -50,4 +51,4 @@ export const FullInput = (props: FullInputPropsType) => {
 
         </div>
     )
-}
+} )

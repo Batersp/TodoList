@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import './App.css';
 import {TaskType} from "./TodoList";
 import {FullInput} from "./components/FullInput";
@@ -24,6 +24,7 @@ export type TasksStateType = {
 }
 
 function AppWithRedux() {
+    console.log('AppWithRedux')
 
     let todolists = useSelector<AppRootStateType, Array<TodolistsType>>(state => state.todolists)
 
@@ -40,9 +41,9 @@ function AppWithRedux() {
         dispatch(changeTaskTitleAC(todolistID, taskId, title))
     }
 
-    const addTodoListHandler = (title: string) => {
+    const addTodoListHandler = useCallback ((title: string) => {
         dispatch(addTodolistAC(title))
-    }
+    }, [])
 
 
     const removeTodoList = (todoListId: string) => {

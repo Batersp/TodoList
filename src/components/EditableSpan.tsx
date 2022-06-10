@@ -5,7 +5,8 @@ export type EditableSpanPropsType = {
     callBack: (title: string) => void
 }
 
-export const EditableSpan = (props: EditableSpanPropsType) => {
+export const EditableSpan = React.memo ( (props: EditableSpanPropsType) => {
+    console.log('EditableSpan')
 
     const [edit, setEdit] = useState(false)
     const [newTitle, setNewTitle] = useState(props.value)
@@ -19,7 +20,7 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
         props.callBack(newTitle)
     }
 
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const onChangeHandler =  (e: ChangeEvent<HTMLInputElement>) => {
         setNewTitle(e.currentTarget.value)
 
     }
@@ -34,4 +35,4 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
             />
             : <span onDoubleClick={onClickHandler}>{props.value}</span>
     )
-}
+})
