@@ -11,10 +11,10 @@ type TaskPropsType = {
     task: TaskType
 }
 
-export const Task = React.memo ( (props: TaskPropsType) => {
+export const Task = React.memo((props: TaskPropsType) => {
 
     const dispatch = useDispatch()
-    const onChangeChangeStatus =  (e: ChangeEvent<HTMLInputElement>) => {
+    const onChangeChangeStatus = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(changeTaskStatusAC(props.task.id, e.currentTarget.checked, props.todolistId))
     }
     return (
@@ -23,13 +23,18 @@ export const Task = React.memo ( (props: TaskPropsType) => {
                       checked={props.task.isDone}
                       onChange={onChangeChangeStatus}/>
             <EditableSpan value={props.task.title}
-                          callBack={useCallback ( (title: string) => dispatch(changeTaskTitleAC(props.todolistId, props.task.id, title)),[props.todolistId, props.task.id])}/>
+                          callBack={useCallback((title: string) => dispatch(changeTaskTitleAC(props.todolistId, props.task.id, title)), [props.todolistId, props.task.id])}/>
             <IconButton aria-label="delete" color={"secondary"}>
                 <Delete onClick={() => dispatch(removeTaskAC(props.task.id, props.todolistId))}/>
             </IconButton>
         </li>
     )
 });
+
+
+
+
+
 
 
 
